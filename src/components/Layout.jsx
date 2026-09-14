@@ -1,5 +1,5 @@
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 import { company } from '../data'
 import Effects from './Effects'
 
@@ -14,31 +14,75 @@ const links = [
 
 export default function Layout() {
   const [open, setOpen] = useState(false)
-  const [wipe, setWipe] = useState(false)
+  const [wipe, setWipe] = useState('idle')
+  const pending = useRef(null)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!location.hash) window.scrollTo(0, 0)
-    setOpen(false)
-  }, [location.pathname, location.hash])
+    const onClick = (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      const a = e.target.closest('a')
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return
+      const href = a.getAttribute('href')
+      if (!href || /^(https?:|mailto:|tel:|#)/i.test(href)) return
+      const url = new URL(a.href, window.location.origin)
+      if (url.origin !== window.location.origin) return
+      const to = `${url.pathname}${url.search}${url.hash}`
+      const here = `${location.pathname}${location.search}${location.hash}`
+      if (to === here) return
+      e.preventDefault()
+      e.stopPropagation()
+      pending.current = to
+      setOpen(false)
+      setWipe('cover')
+    }
+    document.addEventListener('click', onClick, true)
+    return () => document.removeEventListener('click', onClick, true)
+  }, [location.pathname, location.search, location.hash])
 
   useEffect(() => {
-    setWipe(true)
-    const t = setTimeout(() => setWipe(false), 620)
+    if (wipe !== 'cover') return undefined
+    const t = setTimeout(() => {
+      if (pending.current) navigate(pending.current)
+    }, 520)
     return () => clearTimeout(t)
-  }, [location.pathname])
+  }, [wipe, navigate])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    if (wipe !== 'cover' || !pending.current) return undefined
+    const to = pending.current
+    const here = `${location.pathname}${location.search}${location.hash}`
+    const pathOnly = `${location.pathname}${location.search}`
+    if (here !== to && pathOnly !== to.split('#')[0]) return undefined
+    window.scrollTo(0, 0)
+    const t = window.setTimeout(() => setWipe('hold'), 40)
+    return () => window.clearTimeout(t)
+  }, [location, wipe])
+
+  useEffect(() => {
+    if (wipe !== 'hold') return undefined
+    const t = setTimeout(() => setWipe('reveal'), 140)
+    return () => clearTimeout(t)
+  }, [wipe])
+
+  useEffect(() => {
+    if (wipe !== 'reveal') return undefined
+    const t = setTimeout(() => setWipe('idle'), 560)
+    return () => clearTimeout(t)
+  }, [wipe])
+
+  useEffect(() => {
+    document.body.style.overflow = open || wipe === 'cover' || wipe === 'hold' ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [open])
+  }, [open, wipe])
 
   return (
     <>
       <Effects routeKey={location.pathname} />
-      <div className={`page-wipe ${wipe ? 'on' : ''}`} />
+      <div className={`page-wipe ${wipe}`} aria-hidden="true" />
       <a className="skip" href="#main">
         Zum Inhalt
       </a>
@@ -77,7 +121,7 @@ export default function Layout() {
           Jetzt anrufen
         </a>
       </div>
-      <main id="main" className="page-enter">
+      <main id="main">
         <Outlet />
       </main>
       <footer className="footer">
@@ -128,7 +172,10 @@ export default function Layout() {
         </div>
         <div className="wrap legal">
           <span>© {new Date().getFullYear()} {company.short}</span>
-          <span>Bilder: {company.name} · Redesign-Demo</span>
+          <a className="made-by" href="tel:+41772361220">
+            Made by Mekkz
+            <span>077 236 12 20</span>
+          </a>
         </div>
       </footer>
     </>

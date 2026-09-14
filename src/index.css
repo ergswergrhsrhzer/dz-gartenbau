@@ -286,13 +286,31 @@ select {
   inset: 0;
   z-index: 70;
   pointer-events: none;
-  background: linear-gradient(120deg, #1c1714, #5d7a22);
-  clip-path: circle(0% at 85% 8%);
-  transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  background:
+    radial-gradient(circle at 18% 20%, rgba(141, 179, 58, 0.28), transparent 42%),
+    linear-gradient(160deg, #14110f 0%, #2a1c16 55%, #3d5c12 140%);
+  transform: translate3d(0, 102%, 0);
 }
 
-.page-wipe.on {
-  clip-path: circle(150% at 85% 8%);
+.page-wipe.cover,
+.page-wipe.hold {
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.52s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-wipe.hold {
+  transition: none;
+}
+
+.page-wipe.reveal {
+  transform: translate3d(0, -102%, 0);
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-wipe.idle {
+  transform: translate3d(0, 102%, 0);
+  transition: none;
 }
 
 .reveal {
@@ -425,6 +443,11 @@ body {
 
   .legal {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .made-by {
+    align-self: flex-end;
   }
 
   .hero-canvas {
@@ -771,9 +794,28 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 12px;
   font-size: 13px;
   color: #b7aea4;
+}
+
+.made-by {
+  margin-left: auto;
+  text-align: right;
+  font-weight: 600;
+  color: #e8e0d4;
+  line-height: 1.35;
+}
+
+.made-by span {
+  display: block;
+  color: var(--lime);
+  letter-spacing: 0.04em;
+}
+
+.made-by:hover {
+  color: white;
 }
 
 .values {
