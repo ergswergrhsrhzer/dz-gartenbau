@@ -1,0 +1,146 @@
+export const company = {
+  name: 'Diebold & Zgraggen Gartenbau AG',
+  short: 'diebold.zgraggen',
+  claim: 'Gärten aus Ideen und Können',
+  street: 'Bernardastrasse 40',
+  zip: '5442 Fislisbach',
+  phone: '+41 56 493 46 08',
+  phoneHref: 'tel:+41564934608',
+  email: 'info@dzgartenbau.ch',
+  expertiseEmail: 'a.diebold@dzgartenbau.ch',
+  instagram: 'https://www.instagram.com/skygardens_schweiz',
+  facebook: 'https://www.facebook.com/dzgartenbau',
+  login: 'https://fm.dzgartenbau.ch:444/fmi/webd/kundenportal',
+  hours: [
+    { label: 'Montag bis Freitag', value: '07.30–12.00 · 13.15–17.00' },
+  ],
+  note: 'Der Schaugarten ist immer öffentlich zugänglich, via Parkplatz Wohnbedarf Talamona.',
+}
+
+export const heroes = [
+  { src: '/media/hero-1.jpg', title: 'Entspannen und geniessen' },
+  { src: '/media/hero-2.jpg', title: 'Nah am paradiesischen' },
+  { src: '/media/hero-3.jpg', title: 'Einfach leben' },
+  { src: '/media/hero-4.jpg', title: 'Elemente im Garten' },
+  { src: '/media/hero-5.jpg', title: 'Vielfalt aus Stauden' },
+  { src: '/media/hero-6.jpg', title: 'Dachgarten-Leben' },
+  { src: '/media/hero-7.jpg', title: 'Natur erleben' },
+]
+
+export const services = [
+  {
+    slug: 'planung',
+    title: 'Planung',
+    kicker: 'Vom ersten Gespräch zum 3D-Erlebnis',
+    lead: 'Gärten sind mehr als Grün – sie sind Lebensräume voller Gefühl. Seit über 30 Jahren gestalten wir Aussenräume, die berühren.',
+    points: [
+      'Besuch vor Ort: Wünsche hören, Situation lesen, nächste Schritte definieren',
+      'Konzept mit Skizzen, Plänen und Visualisierungen',
+      'Realitätsnahe 3D-Bilder für Raum, Material und Stimmung',
+      'Umgebungspläne, Baugesuchsunterlagen, Pflanzplanung, Pflegekonzepte',
+    ],
+    image: '/media/wide-4.jpg',
+  },
+  {
+    slug: 'bau',
+    title: 'Bau',
+    kicker: 'Wir bauen Oasen',
+    lead: 'Neubau oder Umgestaltung: Es entsteht ein neues Raum- und Lebensgefühl. Handwerk und beste Ideen fliessen in jeden Stein und jede Pflanze.',
+    points: [
+      'Garten-Neubau und Umgestaltung',
+      'Terrassen als Öffnung zur Natur',
+      'Dachgärten, Gründächer und Retentionsdächer',
+      'Kombination mit Solar: Energiedach und Begrünung',
+    ],
+    image: '/media/stair-1.webp',
+  },
+  {
+    slug: 'unterhalt',
+    title: 'Unterhalt',
+    kicker: 'Pflege, die mitwächst',
+    lead: 'Wir betreuen Grossanlagen, Spielplätze und private Gärten. Geschulte Kundengärtnerinnen und -gärtner mit Fachausweis oder höherer Qualifikation.',
+    points: [
+      'Pflege im Abonnement oder auf Abruf',
+      'Pflegeplan: was, wo und wann – auch wenn Sie nicht zu Hause sind',
+      'Beratung und Instruktion, wenn Sie selbst pflegen',
+      'Schnüren des optimalen Pflege-Pakets',
+    ],
+    image: '/media/g-57.jpg',
+  },
+  {
+    slug: 'service',
+    title: 'Service',
+    kicker: 'Wir erleichtern Ihr Leben',
+    lead: 'Seit mehr als 25 Jahren bauen wir Bewässerungssysteme. Dazu kommen biothermische Unkrautbekämpfung, Belagsreinigung, Rasenroboter und Kontrollen.',
+    points: [
+      'Bewässerung inkl. App, Regenwasser und Winterdienst',
+      'Biothermische, giftfreie Unkrautbekämpfung',
+      'Rasenroboter: Auswahl, Installation, Wartung',
+      'Spielplatz- und Dachkontrolle, Böschungs mähen',
+    ],
+    image: '/media/g-35.jpg',
+  },
+  {
+    slug: 'expertisen',
+    title: 'Expertisen',
+    kicker: 'Wissenswert',
+    lead: 'Alain Diebold ist zertifizierter Gutachter GJS und im Auftrag von JardinSuisse tätig.',
+    points: [
+      'Augenschein',
+      'Parteigutachten und vereinbartes Gutachten',
+      'Schiedsgutachten',
+      'Gerichtsexpertisen',
+    ],
+    image: '/media/g-31.jpg',
+  },
+]
+
+export const gallery = [
+  { src: '/media/g-1.jpg', cat: 'Gärten' },
+  { src: '/media/g-3.jpg', cat: 'Stauden' },
+  { src: '/media/g-4.jpg', cat: 'Sitzplätze' },
+  { src: '/media/g-6.jpg', cat: 'Terrassen' },
+  { src: '/media/g-9.jpg', cat: 'Wasser' },
+  { src: '/media/g-13.jpg', cat: 'Beläge' },
+  { src: '/media/g-18.jpg', cat: 'Hecken' },
+  { src: '/media/g-23.jpg', cat: 'Gärten' },
+  { src: '/media/g-24b.jpg', cat: 'Details' },
+  { src: '/media/g-29.jpg', cat: 'Sichtschutz' },
+  { src: '/media/g-32.jpg', cat: 'Mauern' },
+  { src: '/media/g-33.jpg', cat: 'Kunst' },
+  { src: '/media/g-35.jpg', cat: 'Stauden' },
+  { src: '/media/g-47.jpg', cat: 'Beleuchtung' },
+  { src: '/media/g-57.jpg', cat: 'Rasen' },
+  { src: '/media/g-63.jpg', cat: 'Accessoires' },
+  { src: '/media/gv-2.jpg', cat: 'Gärten' },
+  { src: '/media/gv-3.jpg', cat: 'Treppen' },
+  { src: '/media/gv-8.jpg', cat: 'Gräser' },
+  { src: '/media/gv-13.jpg', cat: 'Terrassen' },
+  { src: '/media/stair-1.webp', cat: 'Treppen' },
+  { src: '/media/stair-2.webp', cat: 'Mauern' },
+  { src: '/media/showgarden.webp', cat: 'Gärten' },
+  { src: '/media/hero-1.jpg', cat: 'Gärten' },
+  { src: '/media/hero-3.jpg', cat: 'Sitzplätze' },
+  { src: '/media/hero-4.jpg', cat: 'Wasser' },
+  { src: '/media/hero-5.jpg', cat: 'Stauden' },
+  { src: '/media/hero-6.jpg', cat: 'Terrassen' },
+]
+
+export const jobs = [
+  'Gruppenleiter*in (Vorarbeiter*in) Garten- und Landschaftsbau',
+  'Gruppenleiter*in (Vorarbeiter*in) Gartenunterhalt / Grünanlagen',
+  'Gärtner*in EFZ (Garten- und Landschaftsbau)',
+  'Gärtner*in EFZ (Gartenunterhalt)',
+]
+
+export const benefits = [
+  'Interne Aus- und Weiterbildung',
+  'Unterstützung bei Aus- und Weiterbildungen (Zeit & Kosten)',
+  'Moderne Infrastruktur',
+  'Bezahlter Arbeitsweg auf die Baustellen',
+  'Jährliche Gutschrift für Sicherheitsschuhe',
+  'Gutschrift für ÖV, Velo und zu Fuss',
+  '5 Wochen Ferien bis 49, 6 Wochen ab 50',
+  'Ausgleich von Mehrstunden durch Freizeit',
+  'Betriebsferien über Weihnachten und Neujahr',
+]
